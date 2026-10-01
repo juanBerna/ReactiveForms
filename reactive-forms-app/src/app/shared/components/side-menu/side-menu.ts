@@ -22,9 +22,9 @@ export class SideMenu {
     title: 'Registro',
     route: './auth'
   }]
-   countryMenu:MenuItem[] = [{
-    title: 'paises',
-    route: './country'
-  }]
+  //  countryMenu:MenuItem[] = [{
+  //   title: 'paises',
+  //   route: './country'
+  // }]
 
 }

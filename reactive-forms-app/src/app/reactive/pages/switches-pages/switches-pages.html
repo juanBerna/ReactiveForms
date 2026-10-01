@@ -2,7 +2,7 @@
 <hr class="my-6 border-slate-200">
 
 
-<form autocomplete="off">
+<form autocomplete="off" [formGroup]="formSwitches">
 
     <!-- Radio -->
     <div class="mb-5 grid max-w-3xl gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
@@ -13,7 +13,8 @@
                 <input class="h-4 w-4 accent-sky-600"
                        type="radio"
                        value="M"
-                       id="radioMasculino">
+                       id="radioMasculino"
+                       formControlName="gender">
                 <label class="text-sm text-slate-700" for="radioMasculino">
                   Masculino
                 </label>
@@ -23,7 +24,8 @@
                 <input class="h-4 w-4 accent-sky-600"
                        type="radio"
                        value="F"
-                       id="radioFemenino">
+                       id="radioFemenino"
+                       formControlName="gender">
                 <label class="text-sm text-slate-700" for="radioFemenino">
                   Femenino
                 </label>
@@ -40,7 +42,8 @@
             <div class="mt-2 flex items-center gap-2">
                 <input class="h-4 w-4 accent-sky-600"
                        type="checkbox"
-                       id="flexSwitchCheckChecked">
+                       id="flexSwitchCheckChecked"
+                       formControlName="notifications">
                 <label class="text-sm text-slate-700" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
             </div>
 
@@ -54,15 +57,17 @@
             <div class="flex items-center gap-2">
                 <input class="h-4 w-4 accent-sky-600"
                        type="checkbox"
-                       id="flexCheckDefault">
+                       id="flexCheckDefault"
+                       formControlName="terms">
                 <label class="text-sm text-slate-700" for="flexCheckDefault">
                   Términos y condiciones de uso
                 </label>
               </div>
+              @if( formUtils.isValidField(formSwitches, 'terms')) {
               <span class="mt-1 block text-sm text-red-600">
                  Debe de aceptar las condiciones de uso
               </span>
-
+            }
         </div>
     </div>
 
@@ -70,7 +75,7 @@
     <!-- Boton submit -->
     <div class="flex max-w-3xl justify-end">
         <div>
-            <button class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
+            <button (click)="Guardar()" class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
                     type="submit">
                 Guardar
             </button>
@@ -81,15 +86,15 @@
 
 
 <h5>Valor del formulario</h5>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formSwitches.value | json }}</pre>
 <br>
 
 <h5>Persona</h5>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formSwitches.controls['gender'].value | json }}</pre>
 <br>
 
 <h5>Valid</h5>
-<pre>{{ 'object' | json }}</pre>
+<pre>{{ formSwitches.valid | json }}</pre>
 
 <!-- <h5>Términos</h5> -->
 <!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
