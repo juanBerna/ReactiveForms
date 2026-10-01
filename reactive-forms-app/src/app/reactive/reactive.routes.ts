@@ -6,7 +6,7 @@ import { SwitchesPages } from "./pages/switches-pages/switches-pages";
 export const reactiveRoutes:Routes = [
 
       {
-        path:'login',
+        path:'',
         children: [
           {
             path: 'basic',

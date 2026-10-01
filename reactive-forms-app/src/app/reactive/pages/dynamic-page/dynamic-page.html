@@ -1,1 +1,105 @@
-<p>dynamic-page works!</p>,
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">Reactivos: <small class="font-normal text-slate-500">Dinámicos</small></h2>
+<hr class="my-6 border-slate-200">
+
+<form autocomplete="off" [formGroup]="myFormDynamic">
+
+    <!-- Nombre -->
+    <div class="mb-5 grid max-w-3xl gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Nombre</label>
+        <div>
+            <input class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                   placeholder="Nombre de la persona"
+                   formControlName="name"/>
+
+                   @if( formUtils.isValidField(myFormDynamic, 'name')) {
+
+                     <span class="mt-1 block text-sm text-red-600">
+                       {{formUtils.getFieldError(myFormDynamic, 'name') }}
+                      </span>
+                    }
+        </div>
+    </div>
+
+    <!-- Agregar Favorito -->
+    <div class="mb-5 grid max-w-3xl gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Agregar</label>
+        <div>
+
+            <div class="flex">
+                <input class="min-w-0 flex-1 rounded-l-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                       placeholder="Agregar favorito"
+                       [formControl] = 'newFavoriteGameControl'
+                       (keydown.enter)="addToArrayFG()">
+
+
+                <button (click)="addToArrayFG()" class="rounded-r-lg border border-sky-600 px-4 py-2 font-semibold text-sky-600 transition hover:bg-sky-50"
+                        type="button">
+                    Agregar favorito
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Lista de Juegos Favoritos -->
+    <div class="mb-5 grid max-w-3xl gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Favoritos</label>
+        <div formArrayName="favoriteGame">
+          @for (favoriteGame of favoriteGames.controls; track $index; let i = $index) {
+
+
+            <div class="mb-1">
+
+                <div class="flex">
+                    <input
+                    [formControlName] = 'i'
+                    class="min-w-0 flex-1 rounded-l-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200">
+
+                    <button class="rounded-r-lg border border-red-600 px-4 py-2 font-semibold text-red-600 transition hover:bg-red-50"
+                            type="button"
+                            (click)="delateFG(i)">
+                      Eliminar
+                  </button>
+                </div>
+                 @if( formUtils.isValidFielFormArray(favoriteGames, i)) {
+
+                     <span class="mt-1 block text-sm text-red-600">
+                       {{formUtils.getFieldArrayError(favoriteGames, i) }}
+                      </span>
+                    }
+
+            </div>
+}
+        </div>
+    </div>
+
+
+
+    <div class="flex max-w-3xl justify-end">
+        <div>
+            <button type="submit"
+                    class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                    >
+                    <!-- [disabled]="myForm.invalid" -->
+                Guardar
+            </button>
+        </div>
+    </div>
+
+
+</form>
+
+
+
+<span>Valid</span>
+<pre>{{ myFormDynamic.valid| json }}</pre>
+<br>
+
+<span>Value</span>
+<pre>{{ myFormDynamic.value| json }}</pre>
+<br>
+
+<span>Agregar Juego</span>
+<pre>{{ newFavoriteGameControl.valid| json }}</pre>
+<!-- <pre>{{ 'object' | json }}</pre>
+<pre>{{ 'object' | json }}</pre> -->

@@ -1,1 +1,98 @@
-<p>basi-page works!</p>,
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">Reactivos: Básicos</h2>
+<hr class="my-6 border-slate-200" />
+
+<div class="max-w-3xl">
+  <div>
+    <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSave()">
+      <!-- Campo de producto -->
+      <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Producto</label>
+        <div>
+          <input
+            type="text"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+            placeholder="Nombre del producto"
+            formControlName="name"
+          />
+          @if (formUtils.isValidField(myForm, 'name')) {
+            <span class="mt-1 block text-sm text-red-600">
+              <!-- Debe de ser de 3 letras -->
+              {{ formUtils.getFieldError(myForm,'name') }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Campo de producto -->
+      <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Precio</label>
+        <div>
+          <input
+            type="number"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+            placeholder="Precio del producto"
+            formControlName="price"
+          />
+          @if (formUtils.isValidField(myForm,'price')) {
+            <span class="mt-1 block text-sm text-red-600"> {{ formUtils.getFieldError(myForm,'price') }} </span>
+          }
+        </div>
+      </div>
+
+      <!-- Campo de existencias -->
+      <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+        <label class="pt-2 text-sm font-medium text-slate-700">Existencias</label>
+        <div>
+          <input
+            type="number"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+            placeholder="Existencias del producto"
+            formControlName="inStorage"
+          />
+          @if (formUtils.isValidField(myForm,'inStorage')) {
+            <span class="mt-1 block text-sm text-red-600">
+              {{ formUtils.getFieldError(myForm,'inStorage') }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+
+          type="submit"
+          class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
+        >
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="mt-10">
+  <div>
+    <span>Valid</span>
+    <pre>{{ myForm.touched | json }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine | json }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched | json }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+    <span>Error</span>
+    <pre>{{ myForm.controls['name'].errors | json }}</pre>
+    <pre>{{ myForm.controls['price'].errors | json }}</pre>
+    <pre>{{ myForm.controls['inStorage'].errors | json }}</pre>
+
+    <span>Precio</span>
+    <pre>{{ myForm.controls['price'].value | json }}</pre>
+
+    <span>Producto</span>
+    <pre>{{ myForm.controls['name'].value | json }}</pre>
+  </div>
+</div>

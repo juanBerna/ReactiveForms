@@ -1,1 +1,111 @@
-<p>register-page works!</p>,
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">Validaciones Reactivas</h2>
+<hr class="my-6 border-slate-200">
+
+<div class="max-w-3xl">
+    <div>
+
+        <form autocomplete="off">
+
+            <!-- Nombre -->
+            <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+                <label class="pt-2 text-sm font-medium text-slate-700">Nombre y apellido</label>
+                <div>
+                    <input type="text"
+                           class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                           placeholder="Nombre del usuario">
+
+                    <span class="mt-1 block text-sm text-red-600">
+                        Debe de ser en formato de nombre y apellido
+                    </span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+                <label class="pt-2 text-sm font-medium text-slate-700">Email</label>
+                <div>
+                    <input type="email"
+                           class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                           placeholder="Email del usuario">
+                    <span class="mt-1 block text-sm text-red-600">
+                        mensaje de error del email
+                    </span>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+                <label class="pt-2 text-sm font-medium text-slate-700">Username</label>
+                <div>
+                    <input type="text"
+                           class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                           placeholder="Nombre código del usuario">
+                    <span class="mt-1 block text-sm text-red-600">
+                         El username no puede ser Strider
+                    </span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+                <label class="pt-2 text-sm font-medium text-slate-700">Password</label>
+                <div>
+                    <input type="password"
+                           class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                           placeholder="Password de su cuenta">
+
+                    <span class="mt-1 block text-sm text-red-600">
+                         La contraseña debe de ser mayor de 6 caracteres.
+                    </span>
+                </div>
+            </div>
+
+            <!-- Password2 -->
+            <div class="mb-5 grid gap-2 sm:grid-cols-[minmax(9rem,25%)_1fr] sm:items-start">
+                <label class="pt-2 text-sm font-medium text-slate-700">Confirmar</label>
+                <div>
+                    <input type="password"
+                           class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm outline-none transition focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
+                           placeholder="Confirmar la contraseña">
+
+                    <span class="mt-1 block text-sm text-red-600">
+                         Las contraseñas deben de ser iguales
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="flex justify-end">
+                    <button class="rounded-lg bg-sky-600 px-4 py-2 font-semibold text-white shadow-sm transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-300"
+                            type="submit">
+                        Crear
+                    </button>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<h2>Form Valid: </h2>
+<h2>Form Status: </h2>
+<h2>Form Pending: </h2>
+<h2>Form errors</h2>
+<pre>{{ 'formulario' | json }}</pre>
+
+<h5>Nombre</h5>
+<pre>{{ 'formulario' | json }}</pre>
+
+<h5>Email</h5>
+<pre>{{ 'formulario' | json }}</pre>
+
+<h5>Username</h5>
+<pre>{{ 'formulario' | json }}</pre>
+
+
+<h5>Password</h5>
+<pre>{{ 'formulario' | json }}</pre>
+
+<h5>Confirmar</h5>
+<pre>{{ 'formulario' | json }}</pre>
